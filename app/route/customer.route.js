@@ -16,4 +16,9 @@ module.exports = function(app) {
  
     // Delete a Customer with Id
     app.delete('/api/customers/:customerId', customers.delete);
+
+
+    // Create a new Customer
+    app.post('/api/customers', customers.create);
+ 
 }

@@ -21,6 +21,6 @@ db.sequelize = sequelize;
 
 //Models/tables
 db.customers = require('../model/customer.model.js')(sequelize, Sequelize);
-
+db.images = require('../model/img.model.js')(sequelize, Sequelize);
 
 module.exports = db;
