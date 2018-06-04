@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json())
+app.use(express.static('resources'));
+global.__basedir = __dirname;
 
 const db = require('./app/config/db.config.js');
   
@@ -11,9 +13,12 @@ const db = require('./app/config/db.config.js');
 //});
 
 require('./app/route/customer.route.js')(app);
+require('./app/route/upload.route.js')(app);
+require('./app/route/user.route.js')(app);
+
  
 // Create a Server
-var server = app.listen(8081, function () {
+var server = app.listen(8083, function () {
  
   var host = server.address().address
   var port = server.address().port

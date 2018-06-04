@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AngularJS - Bootstrap - NodeJS/Express - MongoDB</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/js/bootstrap.min.css">
+  <script src="/static/js/angular.min.js"></script>
+  <script src="/static/js/controller.js"></script>
+</head>
+ 
+<body> 
+<div class="container" ng-app="app"> 
+<div class="col-sm-4">
+	<h3>NodeJS/Express - Post/Get</h3>
+	<div ng-controller="postController">
+		<div>		
+			<form name="userForm" enctype="multipart/form-data" ng-submit="submitUserForm()" method="POST">
+			  <div class="form-group">
+				<label for="firstname">FirstName:</label>
+				<input ng-model="firstname" type="text" class="form-control" id="firstname" placeholder="Enter FirstName"/>
+			  </div>
+			  <div class="form-group">
+				<label for="lastname">LastName:</label>
+				<input ng-model="lastname" type="text" class="form-control" id="lastname" placeholder="Enter LastName"/>
+			  </div>
+			  <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+		
+		<div>{{postMsg}}</div>
+		<div>{{postErrMsg}}</div>
+	</div>
+	<br>
+
+	<div class="container" ng-app="app" ng-controller="jsaLoadUsers">
+		<h3>User List:</h3>
+		<div id="userlist" class="row col-md-7 table-responsive">
+			<table class="table table-bordered table-hover">
+				<tr>
+					<th>No</th>
+					   <th>First Name</th>
+					   <th>Last Name</th>
+					<th>Created</th>
+					<th>Action</th>
+				 </tr>
+				  <tr ng-repeat="cust in users | orderBy : 'name'" ng-class-even="'info'" ng-class-odd="'success'">
+					  <td>{{cust.id }}</td>
+					<td>{{cust.firstname | uppercase}}</td>
+					<td>{{cust.lastname}}</td>
+					<td>{{cust.createdAt | date:'medium'}}</td>
+					<td><a ng-href="/api/users/{{cust.id}}">Edit</a></td>
+				  </tr>
+			</table>
+			<div>{{getErrMsg}}</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+	
+</div>	
+</div>
+</body>
+</html>
